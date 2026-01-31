@@ -598,6 +598,7 @@ document.querySelectorAll("input").forEach(input => {
 
 
 async function login() {
+  const API_BASE = "http://127.0.0.1:8000";
   // Turtle-Wrapper Grundzustand
   turtle.className = "turtle-login-wrapper";
 
@@ -633,41 +634,31 @@ async function login() {
 
   // Ab hier: Async Login-Request
   try {
-    const res = await fetch("/login", {
+    const res = await fetch(`${API_BASE}/api/login/`, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ email, password }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
       credentials: "include"
     });
 
-    // Server leitet direkt weiter (z.B. /dashboard)
-    if (res.redirected) {
-      turtle.classList.add("login-success");
-      setTimeout(() => {
-        window.location.href = res.url;
-      }, 1500);
-      return;
-    }
+    const payload = await res.json().catch(() => ({}));
 
-    // HTTP-Fehler → Login fehlgeschlagen
     if (!res.ok) {
       turtle.classList.add("error");
       passGroup.classList.add("error");
       const errorText = passGroup.querySelector(".error-text");
       if (errorText) {
-        errorText.innerText = "Invalid login credentials";
+        errorText.innerText = payload.error || "Invalid login credentials";
       }
       return;
     }
 
-    // Erfolg ohne Redirect → optional eigene Weiterleitung
     turtle.classList.add("login-success");
     setTimeout(() => {
-      window.location.href = "Home.html";
+      window.location.href = "dashboard.html";
     }, 1500);
 
   } catch (err) {
-    // Netzwerk-/Serverfehler
     turtle.classList.add("error");
     alert("Server not reachable.");
   }
