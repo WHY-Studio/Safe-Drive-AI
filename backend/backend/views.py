@@ -5,7 +5,7 @@ from django.http import FileResponse, Http404
 
 
 def frontend_root(request):
-    return frontend_file(request, 'login.html')
+    return frontend_file(request, 'Home.html')
 
 
 def frontend_file(request, path):
