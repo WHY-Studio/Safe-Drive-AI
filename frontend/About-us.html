@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Über uns – Safe-Drive AI</title>
+  <link rel="icon" type="image/svg" href="img/Bild_2026-01-13_163007155-removebg-preview.png" sizes="32x32">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+
+    .strich {
+      height: 2px;
+      background-color: #1e5eff;
+      width: 100%;
+    }
+
+    .logo-img {
+      height: 90px;
+      right: -2px;
+      top: -5px;
+      filter: grayscale(1);
+      position: absolute;
+    }
+
+    body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(30,94,255,0.08), transparent 60%),
+              #0f1218;
+  color: #e6e9f0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+header {
+  background: linear-gradient(to right, #151a22, #10141b);
+  padding: 10px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  height: 60px;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 22px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: #dce3ff;
+  text-decoration: none;
+  border-radius: 999px;
+  background: transparent;
+  transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-1.5px);
+  color: #ffffff;
+}
+
+.nav-link.active {
+  background: rgba(30, 94, 255, 0);
+}
+
+/* SVG Border */
+.border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.nav-link:hover rect,
+.nav-link.active rect {
+  stroke-dashoffset: 0;
+}
+
+.border-svg rect {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 1.8;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1),
+              filter 0.3s ease;
+}
+
+.nav-link:hover rect,
+.nav-link.active rect {
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 8px rgba(30,94,255,0.6));
+}
+
+.icon-link {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 22px;
+}
+
+.icon-border circle {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.icon-link:hover circle,
+.icon-link.active circle {
+  stroke-dashoffset: 0;
+}
+
+li {
+  font-size: 22px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+    .hero {
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #1e5eff;
+      margin-bottom: 10px;
+    }
+
+    .team-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 40px 10%;
+    }
+
+    .team-card {
+      background: #151a22;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      height: 1300px;
+    }
+
+    .line {
+      height: 2px;
+      background-color: #1e5eff;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    footer {
+  background-color: #0b0e14;
+  padding: 20px;
+  font-size: 0.9em;
+  margin-top: 550px;
+  color: #9aa4b2;
+}
+
+
+    .logo-img-innertextbox {
+      height: 350px;
+    }
+    #icon_login {
+      font-size: 28px; 
+      margin-top: 3px;
+    }
+    .team-card p {
+      width: 900px;
+      justify-self: center;
+    }
+    .a-text {
+      text-decoration:dashed;
+      color: #1e5eff;
+      text-decoration: none;
+    }
+    .schraeger-container {
+      background: #1a3a6d; /* Deine Wunschfarbe, z.B. Blau: #1976d2 */
+      color: #151a22;
+      padding: 40px 30px;
+      width: 480px;
+      position: absolute;
+      clip-path: polygon(
+        100% 60%,      /* oben rechts (ursprünglich oben links) */
+        0% 0%,         /* oben links (ursprünglich oben rechts) */
+        0% 36%,        /* unten links (ursprünglich unten rechts) */
+        100% 100%
+      );
+      /* Die Werte sorgen für die schräge obere Kante */
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      height: 500px;
+      width: 600px;
+      padding: 200px;
+      z-index: -1;
+      left: 0;
+      top: 650px;
+      opacity: 0.8;
+      
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#"><img src="img/Bild_2025-07-23_212955299-removebg-preview.png" class="logo-img" alt="Safe-Drive Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="Home.html" class="nav-link ">
+          Home
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="98"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+        <li><a href="Function.html" class="nav-link " style="justify-self: center;">Function 
+          
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="100"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a></li>
+        <li><a href="About-us.html"class="nav-link active">About <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="Abo-models.html"class="nav-link">Abo's<svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="login.html" class="nav-link icon-link" style="font-size: 30px; ">
+          <i class="fa-solid fa-circle-user"></i>
+        
+          <svg class="border-svg icon-border"
+               viewBox="0 0 100 100"
+               preserveAspectRatio="xMidYMid meet">
+            <circle
+              cx="50"
+              cy="50"
+              r="48"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="strich"></div>  
+
+  <div class="hero">
+    <h1>About Us</h1>
+    <div class="line"></div>
+  </div>
+  <div class="schraeger-container">
+  </div>
+  <section class="team-section">
+    <div class="team-card">
+      <img src="img/security-removebg-preview.png" class="logo-img-innertextbox">
+      <p>
+        <br><br><br>
+        <strong>We are a small, dedicated development team</strong> committed to making digital communication safer and more responsible. Our work is part of a larger, long-term initiative that is still in the early stages of development and is expected to be completed within the next four years. <strong><a href="#" class="a-text">More informations</a></strong>
+      
+        <br><br>
+        At the heart of our efforts is <strong>Safe-Drive</strong> – an AI-based solution designed to detect toxic content such as hate speech, discrimination, or targeted harassment in comments, chats, and digital platforms. It helps platform operators and developers moderate content effectively – <em>without restricting healthy and constructive discourse</em>.
+      
+        <br><br>
+        <strong>The Need</strong><br>
+        The idea for Safe-Drive arose from a growing concern: the misuse of online communication is increasing. Intelligent tools are required to identify harmful behavior early and reliably. Our system is based on a custom-built classifier that has been trained, tested, and refined over many months.
+      
+        <br><br>
+        <blockquote style="font-style: italic; color: #444; margin: 20px auto; max-width: 80%;">
+          “Good technology solves problems – responsible technology identifies them early.”
+        </blockquote>
+      
+        <br>
+        <strong>Our Approach</strong><br>
+        We take a pragmatic, solution-oriented path. Rather than exaggerated promises, we focus on functionality and clarity. Our mission is not to control the internet, but to <em>contribute to a safer and more respectful digital environment</em> through targeted technical support.
+      
+        <br><br>
+        <strong>Who It's For</strong><br>
+        Safe-Drive is suitable for individual developers, small websites, as well as larger platforms and companies that care about maintaining a healthy community. At the same time, we are continuously developing the system to scale with larger infrastructures.
+      
+        <br><br>
+        We are proud of what we've built so far – and we're motivated to continue building a digital future where <strong>technology and responsibility go hand in hand</strong>.
+        <br><br><br><br><br><br><br><br><br><br>
+        Contact us : <strong>Safe-Drive.ai@web.de</strong>
+      </p>
+      
+    </div>
+  </section>
+
+  <div class="schraeger-container2">
+    <div class="part-of2"></div>
+</div>
+
+  <div class="footer">
+    © 2025 Safe-Drive AI – All rights reserved
+  </div>
+</body>
+</html>

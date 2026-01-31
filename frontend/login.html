@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe-Drive AI - Login</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+<link rel="icon" href="img/Bild_2026-01-13_163007155-removebg-preview.png" sizes="32x32">
+
+<style>
+  *{
+    --skin: #4660b7;
+  --skinShade: #2736a4;
+  --shell: #795745;
+  --shellShade: #683f36;
+}
+/* ================= GLOBAL ================= */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(30,94,255,0.08), transparent 60%), #0f1218;
+  color: #e6e9f0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  
+}
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+
+  height: 60px;
+}
+
+header .logo-img {
+  height: 90px;
+  filter: grayscale(1);
+  position: absolute;
+  right: 5px;
+  top: 2px ;
+}
+
+header .back {
+  color: #dce3ff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+header .back:hover {
+  color: #1e5eff;
+}
+
+/* ================= LOGIN GRID ================= */
+.login-page {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  height: calc(100vh - 60px);
+}
+
+/* ================= TURTLE VARIABLES ================= */
+
+
+/* ================= TURTLE WRAPPER ================= */
+.turtle-login-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+}
+
+
+
+/* ================= TURTLE BASE ================= */
+.turtle {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  transform: scaleX(-1) scale(0.75);
+
+  /* schaut zum Login */
+  transform-origin: center;
+}
+
+/* ================= SKIN ================= */
+.skin {
+  background: var(--skin);
+}
+
+/* ================= HEAD ================= */
+.head {
+  position: absolute;
+  height: 70px;
+  width: 35px;
+  border-radius: 30px 0 35px 50px;
+  top: 130px;
+  left: 105px;
+  transform: rotate(-30deg);
+  background: var(--skinShade);
+  z-index: 20;
+
+
+  transition: transform 0.6s ease;
+}
+
+
+.head::after {
+  content: "";
+  position: absolute;
+  height: 65px;
+  width: 65px;
+  border-radius: 20px 45px 60px 60px;
+  top: -45px;
+  right: -15px;
+  transform: rotate(5deg);
+  background: var(--skin);
+  z-index: 1;
+}
+
+/* ================= EYE ================= */
+.eye {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+
+  top: -30px;
+  left: 14px;
+
+  z-index: 30;
+
+  animation: blink 6s infinite;
+  transform-origin: center;
+}
+
+
+
+/* ================= TAIL ================= */
+.tail {
+  position: absolute;
+  height: 18px;
+  width: 36px;
+  bottom: 140px;
+  right: 10px;
+  transform: rotate(-15deg) !important;
+  border-radius: 40px 20px 60px 40px;
+  animation: tailWag 9s ease-in-out infinite;
+}
+
+/* ================= SHELL ================= */
+.shell {
+  position: absolute;
+  top: 120px;
+  left: 105px;
+  width: 0;
+  height: 0;
+  border-right: 110px solid transparent;
+  border-top: 110px solid var(--shell);
+  border-left: 110px solid var(--shell);
+  border-bottom: 110px solid transparent;
+  border-radius: 110px;
+  transform: rotate(45deg);
+  z-index: 9999;
+}
+.belly {
+  height: 100px;
+  width: 200px;
+  background-color: wheat;
+  border-radius: 50%;
+  position: absolute;
+  top: 165px;
+  right: 50px;
+  z-index: -999;
+}
+
+.shell::after {
+  content: "";
+  position: absolute;
+  background: var(--shellShade);
+  height: 18px;
+  width: 230px;
+  border-radius: 50px;
+  transform: rotate(-45deg);
+  top: -2px;
+  left: -110px;
+}
+
+/* ================= ARMS ================= */
+.frontLeftArm {
+  position: absolute;
+  height: 90px;
+  width: 50px;
+  border-radius: 40px 40px 100px 20px;
+  top: 190px;
+  left: 120px;
+  transform: rotate(20deg);
+  z-index: 3;
+}
+
+.frontRightArm {
+  position: absolute;
+  height: 90px;
+  width: 50px;
+  border-radius: 40px 40px 100px 20px;
+  top: 190px;
+  left: 140px;
+  transform: rotate(20deg);
+  background: var(--skinShade);
+  z-index: 2;
+}
+
+.backLeftArm {
+  position: absolute;
+  height: 90px;
+  width: 50px;
+  border-radius: 40px 40px 20px 100px;
+  top: 190px;
+  left: 250px;
+  transform: rotate(-20deg);
+  z-index: 3;
+}
+
+.backRightArm {
+  position: absolute;
+  height: 90px;
+  width: 50px;
+  border-radius: 40px 40px 20px 100px;
+  top: 190px;
+  left: 230px;
+  transform: rotate(-20deg);
+  background: var(--skinShade);
+  z-index: 2;
+}
+
+/* ================= STATES ================= */
+
+.turtle-login-wrapper.typing .head {
+  transform: translateX(12px) translateY(-6px);
+  transition: transform 0.8s ease;
+}
+
+
+
+
+.turtle-login-wrapper.error .frontLeftArm,
+.turtle-login-wrapper.error .frontRightArm,
+.turtle-login-wrapper.error .backLeftArm,
+.turtle-login-wrapper.error .backRightArm {
+  transform: translateX() translateY(-30px);
+  opacity: 0;
+  transition: transform 0.16s ease-in;
+}
+
+.turtle-login-wrapper.error .head {
+  transform: translateX(75px) translateY(45px);
+  transition: transform 0.16s ease-in;
+}
+.turtle-login-wrapper.error .head::after {
+  transform: translateX(0px);
+}
+
+.turtle-login-wrapper.error .tail {
+  transform: translateX(-50px) !important;
+}
+
+.turtle-login-wrapper.error .shell {
+  animation: shellShake 0.45s ease;
+}
+
+
+
+@keyframes shellShake {
+  0% { transform: rotate(45deg); }
+  25% { transform: rotate(47deg); }
+  50% { transform: rotate(43deg); }
+  100% { transform: rotate(45deg); }
+}
+
+
+.turtle-login-wrapper.login-success .turtle {
+  animation: turtleWalk 1.8s ease forwards;
+}
+
+
+
+.turtle-error-text {
+  position: absolute;
+  bottom: -140px !important;
+  color: #ff6b6b;
+  font-size: 24px;
+  right: 500px !important;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.turtle-login-wrapper.error .turtle-error-text {
+  opacity: 1;
+}
+
+
+
+/* ================= ANIMATIONS ================= */
+@keyframes blink {
+  0%, 90%, 100% { height: 14px; }
+  92% { height: 0; }
+}
+
+@keyframes tailWag {
+  0%, 90% { transform: rotate(0deg); }
+  93% { transform: rotate(10deg); }
+  96% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes turtleShake {
+  0%   { transform: scaleX(-1) scale(0.75) translateX(0); }
+  25%  { transform: scaleX(-1) scale(0.75) translateX(-25px); }
+  50%  { transform: scaleX(-1) scale(0.75) translateX(25px); }
+  100% { transform: scaleX(-1) scale(0.75) translateX(0); }
+}
+
+@keyframes turtleWalk {
+  to {
+    transform: scaleX(-1) scale(0.75) translateX(160px);
+  }
+}
+
+.turtle-ground {
+  position: absolute;
+  bottom: 40px;
+  width: 560px;
+  height: 140px;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(30,94,255,0.25) 0%,
+    rgba(30,94,255,0.15) 40%,
+    rgba(30,94,255,0.05) 65%,
+    rgba(30,94,255,0.0) 80%
+  );
+
+  filter: blur(6px);
+  z-index: 0;
+}
+
+.turtle-error-banner {
+  position: absolute;
+  top: 60px;
+  right: -270px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 32px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.turtle-error-banner i {
+  font-size: 42px !important;
+  margin: 20px;
+}
+
+.turtle-login-wrapper.error .turtle-error-banner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.turtle-error-banner i {
+  font-size: 18px;
+}
+
+.turtle-subtext {
+  position: absolute;
+  bottom: -65px;
+  font-size: 13px;
+  color: #9aa4b2;
+  opacity: 0.8;
+}
+
+
+/* ================= RIGHT – LOGIN ================= */
+.login-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  width: 360px;
+}
+
+.login-box h1 {
+  font-size: 32px;
+  color: #1e5eff;
+  margin-bottom: 20px;
+}
+
+.login-box p {
+  font-size: 14px;
+  color: #9aa4b2;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 26px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #151a22;
+  color: #fff;
+  font-size: 15px;
+  box-shadow: inset 0 0 0 2px transparent;
+  transition: box-shadow 0.25s ease;
+}
+
+.input-group input:focus {
+  box-shadow: inset 0 0 0 2px #1e5eff;
+}
+
+.input-group.error input {
+  box-shadow: inset 0 0 0 2px #ff3b3b;
+}
+
+.error-text {
+  position: absolute;
+  bottom: -18px;
+  left: 2px;
+  font-size: 12px;
+  color: #ff6b6b;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.input-group.error .error-text { opacity: 1; }
+
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(to right, #1e5eff, #4f7cff);
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(30,94,255,0.4);
+  transition: filter 0.25s ease;
+}
+
+button:hover { filter: brightness(1.1); }
+
+.login-box a { color: #1e5eff; text-decoration: none; font-weight: bold; }
+.login-box a:hover { text-decoration: underline; }
+
+/* ================= ANIMATIONS ================= */
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+@keyframes pulseFast { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+@keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background-color: #0b0e14;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #9aa4b2;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#" style="position: absolute;right: 0px; top: 0px;"><img src="img/Bild_2025-07-23_212955299-removebg-preview.png" class="logo-img" alt="Safe-Drive Logo"></a>
+  <a href="Home.html" class="back"><i class="fa-solid fa-chevron-left"></i> Back</a>
+</header>
+
+<div class="login-page">
+  <!-- LEFT ANIMATION -->
+  <div class="turtle-login-wrapper" id="turtleState">
+    <div class="turtle-ground"></div>
+
+    <div class="turtle">
+      <div class="head skin">
+        <div class="eye"></div>
+      </div>
+      <div class="tail skin"></div>
+      <div class="shell">
+
+        <div class="pattern"></div>
+        
+      </div>
+      <div class="belly"></div>
+      <div class="frontLeftArm skin"></div>
+      <div class="frontRightArm"></div>
+      <div class="backLeftArm skin"></div>
+      <div class="backRightArm"></div>
+    </div>
+    <div class="turtle-error-banner">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span><Strong>Sorry,</Strong><br>Something went wrong</span>
+    </div>
+    
+    <div class="turtle-subtext">
+      Safe-Drive Turtle is guarding your access
+    </div>
+    
+  </div>
+  
+
+  
+  
+
+  <div class="login-panel">
+    <div class="login-box">
+      <h1>Login</h1>
+      <p>Access your Safe-Drive AI dashboard</p>
+  
+      <div class="input-group" id="emailGroup">
+        <input type="email" id="email" placeholder="Email">
+        <div class="error-text">Email is required</div>
+      </div>
+  
+      <div class="input-group" id="passGroup">
+        <input type="password" id="password" placeholder="Password">
+        <div class="error-text">Password is required</div>
+      </div>
+  
+      <button onclick="login()">Sign In</button>
+      <p>Don't have an account? <a href="register.html">Register now!</a></p>
+    </div>
+  </div>
+
+
+
+<script>
+  const turtle = document.getElementById("turtleState");
+const eyes = document.querySelectorAll(".eye");
+
+/* Augen folgen Maus */
+document.addEventListener("mousemove", e => {
+  eyes.forEach(eye => {
+    const rect = eye.getBoundingClientRect();
+    const dx = rect.left + rect.width / 2 - e.clientX;
+    const dy = e.clientY - (rect.top + rect.height / 2);
+
+    const angle = Math.atan2(dy, dx);
+
+    eye.style.transform =
+      `translate(${Math.cos(angle) * 3}px, ${Math.sin(angle) * 3}px)`;
+  });
+});
+
+
+/* Typing */
+document.querySelectorAll("input").forEach(input => {
+  input.addEventListener("input", () => {
+    turtle.className = "turtle-login-wrapper typing";
+  });
+});
+
+
+
+
+
+  </script>
+  
+  <script>
+    // Einmal global referenzieren
+
+
+async function login() {
+  // Turtle-Wrapper Grundzustand
+  turtle.className = "turtle-login-wrapper";
+
+  const email     = document.getElementById("email").value.trim();
+  const password  = document.getElementById("password").value.trim();
+
+  const emailGroup = document.getElementById("emailGroup");
+  const passGroup  = document.getElementById("passGroup");
+
+  // Fehlerzustände zurücksetzen
+  emailGroup.classList.remove("error");
+  passGroup.classList.remove("error");
+  turtle.classList.remove("error");
+  turtle.classList.remove("login-success");
+
+  let hasError = false;
+
+  // Simple Client-Validation
+  if (!email) {
+    emailGroup.classList.add("error");
+    hasError = true;
+  }
+  if (!password) {
+    passGroup.classList.add("error");
+    hasError = true;
+  }
+
+  // Wenn Client-Validation fehlschlägt → Turtle-Error + Abbruch
+  if (hasError) {
+    turtle.classList.add("error");
+    return;
+  }
+
+  // Ab hier: Async Login-Request
+  try {
+    const res = await fetch("/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ email, password }),
+      credentials: "include"
+    });
+
+    // Server leitet direkt weiter (z.B. /dashboard)
+    if (res.redirected) {
+      turtle.classList.add("login-success");
+      setTimeout(() => {
+        window.location.href = res.url;
+      }, 1500);
+      return;
+    }
+
+    // HTTP-Fehler → Login fehlgeschlagen
+    if (!res.ok) {
+      turtle.classList.add("error");
+      passGroup.classList.add("error");
+      const errorText = passGroup.querySelector(".error-text");
+      if (errorText) {
+        errorText.innerText = "Invalid login credentials";
+      }
+      return;
+    }
+
+    // Erfolg ohne Redirect → optional eigene Weiterleitung
+    turtle.classList.add("login-success");
+    setTimeout(() => {
+      window.location.href = "Home.html";
+    }, 1500);
+
+  } catch (err) {
+    // Netzwerk-/Serverfehler
+    turtle.classList.add("error");
+    alert("Server not reachable.");
+  }
+}
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Safe-Drive – Admin Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #0e1016;
+  color: #e6e8ee;
+  display: flex;
+  height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 260px;
+  background: #121521;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #4da3ff;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.nav-item {
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #b7bdd3;
+  font-weight: 500;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: #1b2034;
+  color: #fff;
+}
+
+/* ===== MAIN ===== */
+.main {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.badge {
+  background: #1b2034;
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: #4da3ff;
+  font-size: 13px;
+}
+
+/* ===== SECTIONS ===== */
+.section { display: none; }
+.section.active { display: block; }
+
+/* ===== CARDS ===== */
+.card {
+  background: #121521;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.card h3 { margin-top: 0; }
+
+/* ===== FORM ===== */
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  background: #0e1016;
+  border: 1px solid #232842;
+  border-radius: 8px;
+  color: #fff;
+}
+
+button {
+  padding: 12px 18px;
+  background: #4da3ff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.danger {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+button.small {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #232842;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  color: #9aa2c2;
+}
+
+/* ===== STATUS ===== */
+.status.active { color: #4dff88; font-weight: 600; }
+.status.inactive { color: #ff4d4d; font-weight: 600; }
+
+/* ===== API KEY ===== */
+.api-key {
+  font-family: monospace;
+  background: #0e1016;
+  border: 1px solid #2a2f45;
+  padding: 8px;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo" onclick="openTab(0)">🛡 Safe-Drive</div>
+
+  <div class="nav-item active" onclick="openTab(0)">🔑 API-Zugang</div>
+  <div class="nav-item" onclick="openTab(1)">📊 Kundenübersicht</div>
+  <div class="nav-item" onclick="openTab(2)">📄 Vertrag / Rechnung</div>
+  <div class="nav-item" onclick="openTab(3)">🔄 Updates</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="header">
+    <h1>Admin Dashboard</h1>
+    <div class="badge">Admin-Session aktiv</div>
+  </div>
+
+  <!-- TAB 1 -->
+  <div class="section active">
+    <div class="card">
+      <h3>API-Zugang erstellen</h3>
+
+      <input placeholder="Name">
+      <input placeholder="Email">
+      <input placeholder="Firma">
+
+      <select>
+        <option>Starter</option>
+        <option>Pro</option>
+        <option>Enterprise</option>
+      </select>
+
+      <button onclick="generateApiKey()">API-Key generieren</button>
+      <div id="apiResult"></div>
+    </div>
+  </div>
+
+  <!-- TAB 2 -->
+  <div class="section">
+    <div class="card">
+      <h3>Kundenübersicht</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Kunde</th>
+            <th>Firma</th>
+            <th>Tarif</th>
+            <th>Status</th>
+            <th>API-Key</th>
+            <th>Aktion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Max Mustermann</td>
+            <td>YouTube</td>
+            <td>Pro</td>
+            <td class="status active">Aktiv</td>
+            <td class="api-key">sd_xxxxx</td>
+            <td>
+              <button class="small danger" onclick="terminatePlan(this)">Tarif beenden</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 3 -->
+  <div class="section">
+    <div class="card">
+      <h3>Vertrag / Rechnung</h3>
+
+      <input placeholder="Kundenname">
+      <input placeholder="Firma">
+      <input placeholder="Adresse">
+      <input placeholder="Rechnungsnummer">
+      <input placeholder="Betrag (€)">
+      <textarea placeholder="Vertragstext / Leistungen"></textarea>
+
+      <button>HTML / PDF generieren</button>
+    </div>
+  </div>
+
+  <!-- TAB 4 -->
+  <div class="section">
+    <div class="card">
+      <h3>Safe-Drive Updates</h3>
+
+      <label>Aktuelle Version</label>
+      <input value="v1.0.0">
+
+      <label>Neue Model-Datei (toxic_model.pkl)</label>
+      <input type="file" accept=".pkl">
+
+      <button>Update veröffentlichen</button>
+
+      <p style="opacity:.7;font-size:13px;margin-top:10px;">
+        Clients laden automatisch die neueste Version.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ===== SECURITY CHECK (Backend Pflicht!) ===== */
+fetch("/session", { credentials: "include" })
+  .then(r => r.json())
+  .then(s => {
+    if (!s.loggedIn || s.role !== "admin") {
+      window.location.href = "/login.html";
+    }
+  }).catch(() => {
+    window.location.href = "/login.html";
+  });
+
+function openTab(i) {
+  document.querySelectorAll(".nav-item").forEach((el, idx) =>
+    el.classList.toggle("active", idx === i)
+  );
+  document.querySelectorAll(".section").forEach((el, idx) =>
+    el.classList.toggle("active", idx === i)
+  );
+}
+
+function generateApiKey() {
+  const key = "sd_" + Math.random().toString(36).substring(2, 18);
+  document.getElementById("apiResult").innerHTML =
+    `<div class="api-key">${key}</div>`;
+}
+
+function terminatePlan(btn) {
+  if (!confirm("⚠️ Tarif wirklich beenden? API-Zugriff wird sofort deaktiviert!")) return;
+
+  const row = btn.closest("tr");
+  row.querySelector(".status").textContent = "Beendet";
+  row.querySelector(".status").className = "status inactive";
+  btn.remove();
+}
+</script>
+
+</body>
+</html>

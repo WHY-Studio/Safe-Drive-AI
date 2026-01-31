@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe-Drive AI - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/svg" href="img/Bild_2026-01-13_163007155-removebg-preview.png" sizes="32x32">
+
+
+  <style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(30,94,255,0.08), transparent 60%),
+              #0f1218;
+  color: #e6e9f0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+header {
+  background: linear-gradient(to right, #151a22, #10141b);
+  padding: 10px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  height: 60px;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 22px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: #dce3ff;
+  text-decoration: none;
+  border-radius: 999px;
+  background: transparent;
+  transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-1.5px);
+  color: #ffffff;
+}
+
+.nav-link.active {
+  background: rgba(30, 94, 255, 0);
+}
+
+/* SVG Border */
+.border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.nav-link:hover rect,
+.nav-link.active rect {
+  stroke-dashoffset: 0;
+}
+
+.border-svg rect {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 1.8;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1),
+              filter 0.3s ease;
+}
+
+.nav-link:hover rect,
+.nav-link.active rect {
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 8px rgba(30,94,255,0.6));
+}
+
+.icon-link {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 22px;
+}
+
+.icon-border circle {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.icon-link:hover circle,
+.icon-link.active circle {
+  stroke-dashoffset: 0;
+}
+
+li {
+  font-size: 22px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.hero {
+  position: relative;
+  padding: 110px 20px 140px;
+  background: radial-gradient(circle at top, rgba(30,94,255,0.12), transparent 65%);
+  overflow: hidden;
+}
+
+.hero h1,
+.hero_p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.hero_p {
+  animation-delay: 0.15s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero img {
+  height: 260px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
+}
+
+.demo_container {
+  backdrop-filter: blur(10px);
+  background: rgba(20,24,32,0.8);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.demo_container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(30,94,255,0.35);
+}
+
+.logo-img {
+  height: 90px;
+  right: -2px;
+  top: -5px;
+  filter: grayscale(1) brightness(1.2);
+  position: absolute;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 50px 20px;
+  height: 300px;
+}
+
+.card {
+  background: #151a22;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  transition: height 0.5s ease;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  text-align: left;
+  margin-top: 50px;
+  z-index: 1;
+}
+
+.card:hover {
+  height: 350px;
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #1e5eff;
+}
+
+.extra-text {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  margin-top: 10px;
+  z-index: -1;
+}
+
+.card:hover .extra-text {
+  max-height: 300px;
+  opacity: 1;
+  z-index: -1;
+}
+
+footer {
+  background-color: #0b0e14;
+  padding: 20px;
+  font-size: 0.9em;
+  margin-top: 550px;
+  color: #9aa4b2;
+}
+
+.strich,
+.line-box {
+  height: 2px;
+  background-color: #1e5eff;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(30,94,255,0.6);
+}
+
+/* die restlichen Container (text-section, demo, video, schräg usw.)
+   sind FARBECHT umgestellt, Struktur bleibt identisch */
+
+    .text-section {
+      position: absolute;
+      top: 2150px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      text-align: center;
+      color: #1e5eff;
+      background-color: #151a22;
+      width: 1270px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      height: 400px;
+      
+      
+    }
+    .caption {
+      text-decoration: underline;
+    }
+    .demo_container {
+      position: absolute;
+      top: 230px;
+      background: linear-gradient(to right, #151a22, #10141b);
+      left: 0;
+      width: 350px;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      height: 200px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      
+    }
+    .demo_container:hover::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #1e5eff;
+    }
+    .caption_demo {
+      color: #1e5eff;
+      font-size: x-large;
+
+    }
+    .link_demo {
+      font-weight: 600;
+      text-decoration: none;
+      color: #1e5eff;
+    }
+    
+    .text_demo {
+      font-size:small;
+      margin-top: -25px;
+      margin-bottom: 40px;
+    }
+    #icon_login {
+      font-size: 28px; 
+      margin-top: 3px;
+    }
+    .card-box {
+      background-color: #151a22;
+      justify-self: center;
+      width: 1589px;
+      height: 1000px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border-radius: 12px;
+      margin-top: -40px;
+    }
+    .video-canva {
+      position: absolute;
+      width: 710px; 
+      height: 400px; 
+      top: 270px; 
+      left: 28%;
+      border: none; 
+      padding: 0;
+      margin: 0;
+      border-radius: 12px;
+    }
+    .box-caption {
+      position: absolute;
+      font-size: xx-large;
+      color: #1e5eff;
+      top: 0;
+      left: 43.5%;
+      
+    }
+    .positioner-video {
+      display: flex;
+
+    }
+    .text {
+      position: absolute;
+      top: 130px;
+      left: 60px;
+      height: 700px;
+      width: 300px;
+      justify-content: left;
+      font-size: 14px;
+    }
+    .text2 {
+      position: absolute;
+      top: 130px;
+      right: 60px;
+      height: 700px;
+      width: 300px;
+      justify-content: right;
+      font-size: 14px;
+    }
+    .card-box strong {
+      color: #1e5eff;
+    }
+    .line-box {
+      height: 2px;
+      justify-self: center;
+      background-color: #1e5eff;
+      width: 90%;
+    }
+    .schraeger-container {
+      background: #1a3a6d; /* Deine Wunschfarbe, z.B. Blau: #1976d2 */
+      color: #fff;
+      padding: 40px 30px;
+      width: 480px;
+      position: absolute;
+      clip-path: polygon(
+        100% 60%,      /* oben rechts (ursprünglich oben links) */
+        0% 0%,         /* oben links (ursprünglich oben rechts) */
+        0% 36%,        /* unten links (ursprünglich unten rechts) */
+        100% 100%
+      );
+      /* Die Werte sorgen für die schräge obere Kante */
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      height: 500px;
+      width: 600px;
+      padding: 200px;
+      z-index: -1;
+      left: 0;
+      top: 450px;
+      opacity: 0.8;
+      
+    }
+    .schraeger-container2 {
+      background: #1a3a6d; /* Deine Wunschfarbe, z.B. Blau: #1976d2 */
+      color: #fff;
+      padding: 40px 30px;
+      width: 480px;
+      position: absolute;
+      clip-path: polygon(
+        0 60%,          /* oben links */
+        100% 0%,       /* oben rechts */
+        100% 36%,     /* unten rechts – 85% von oben (nach oben verschoben für Schräge) */
+        0% 100%       /* unten links */
+      );
+      /* Die Werte sorgen für die schräge obere Kante */
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      height: 500px;
+      width: 600px;
+      padding: 200px;
+      top: 1550px;
+      z-index: -2;
+      right: 0;
+      opacity: 0.8;
+      
+    }
+
+    .admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,8,15,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: opacity 0.4s ease;
+}
+
+.admin-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.admin-panel {
+  width: 100%;
+  height: 85%;
+  background: #10141b;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  animation: slideUp 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.admin-sidebar {
+  width: 260px;
+  background: #151a22;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-sidebar h2 {
+  color: #1e5eff;
+}
+
+.admin-sidebar button {
+  background: none;
+  border: none;
+  color: #dce3ff;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-sidebar button:hover {
+  color: #1e5eff;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.admin-tab.hidden {
+  display: none;
+}
+
+.admin-close {
+  position: absolute;
+  top: 18px;
+  right: 30px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #9aa4b2;
+}
+.hidden {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#"><img src="img/Bild_2025-07-23_212955299-removebg-preview.png" class="logo-img" alt="Safe-Drive Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="#" class="nav-link active">
+          Home
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="98"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+        <li><a href="Function.html" class="nav-link" style="justify-self: center;">Function 
+          
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="100"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a></li>
+        <li><a href="About-us.html"class="nav-link">About<svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="Abo-models.html"class="nav-link">Abo's<svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="login.html" class="nav-link icon-link" id="adminIcon" style="font-size: 30px; ">
+          <i class="fa-solid fa-circle-user"></i>
+          <img src="img/Bild_2025-07-23_212955299-removebg-preview.png" class="hidden" style="height:30px;">
+        
+          <svg class="border-svg icon-border"
+               viewBox="0 0 100 100"
+               preserveAspectRatio="xMidYMid meet">
+            <circle
+              cx="50"
+              cy="50"
+              r="48"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="strich"></div>
+
+  <section class="hero">
+    <img src="img/Bild_2026-01-13_161924596-removebg-preview.png">
+    <h1>Welcome to Safe-Drive AI</h1>
+    <p class="hero_p">Protect the digital world with cutting-edge AI.</p>
+
+    
+    <div class="demo_container" onclick="window.location.href='Demo.html'">
+      <h4 class="caption_demo">Our demo-version</h4>
+      <p class="text_demo">Version: 1.11.0 BETA</p>
+      <a href="Demo.html" class="link_demo">Test it now!</a>
+    </div>
+
+  </section>
+    
+  </div>
+  <section class="features">
+ <div class="schraeger-container">
+  <div class="part-of"></div>
+    </div>
+    <div class="card" id="card1">
+      <div class="card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <div>
+        <strong>Analysis</strong><br />
+        Automatically detect toxic content.
+        <div class="extra-text">
+          <p>Our AI continuously scans all incoming content and reliably filters out toxic comments and posts to ensure a safe digital environment.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="card2">
+      <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
+      <div>
+        <strong>Automation</strong><br />
+        Responds faster than ever before.
+        <div class="extra-text">
+          <p>Thanks to automated processes, Safe-Drive can instantly respond to detected toxic content and take appropriate action – more efficiently and faster than manual methods.
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="card3">
+      <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+      <div>
+        <strong>Cross-platform</strong><br />
+        Supports all types of platforms
+        <div class="extra-text">
+          <p>Safe-Drive is compatible with the largest platforms and enables centralized management and monitoring of content across various social networks.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <div class="card-box">
+    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; ; margin-top: 1.6em; margin-bottom: 0.9em; overflow: visible;
+ border-radius: 8px; will-change: transform;">
+  <h4 class="box-caption">Informations</h4>
+  <iframe class="video-canva" loading="lazy" 
+    src="https://www.canva.com/design/DAGpySxAe2s/WnWb7J1CcwSfm1jNTgUoEQ/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+    <div class="posioner-video">
+      <div class="text">
+        <p><strong>“Those who protect today, lead tomorrow.”</strong><br><br>The digital world is evolving faster than anyone expected. Social trends shift overnight, public opinion turns in minutes, and reputational damage happens before platforms can even respond. What was overlooked yesterday becomes tomorrow’s headline. And every second of hesitation speaks louder than a press release.
+
+          Users, regulators, and global advertisers are no longer satisfied with apologies after the fact. They expect prevention. And when prevention fails, they want proof that every possible step was taken in advance.
+          
+          Safe-Drive delivers precisely that. Our AI continuously scans communication in real-time, detecting toxic speech, harassment, and dangerous trends before they become a crisis. It flags threats early — automatically, reliably, and invisibly.
+          
+          This isn’t just a technical upgrade. It’s a shift in how platforms demonstrate leadership and digital responsibility. Because the truth is simple: platforms that invest in proactive protection today will become tomorrow’s most trusted names.
+          
+          Safe-Drive allows decision-makers to act early, reduce legal risk, and maintain public trust — all without disrupting the user experience. It is GDPR-compliant, fully scalable, and easy to integrate.
+          
+          With Safe-Drive, you don’t just react to problems. You prevent them entirely. And that’s the difference between platforms that survive — and those that define the future.
+          
+          The ones who act first will be remembered for setting the standard. The ones who wait may not get a second chance.
+          
+          </p>
+      </div>
+      <div class="text2">
+        <p><strong>“The best protection is the one nobody sees.”</strong><br><br>Trust has become the most valuable asset in today’s online platforms. But trust is fragile — and once broken, it’s nearly impossible to rebuild. One missed comment, one viral post of hate, one slow reaction can undo years of credibility.
+
+          Billions of users interact every day, yet every message is a potential risk. Platforms don’t just need tools. They need silent defenders. Invisible safeguards that work constantly — so your team doesn’t have to be everywhere at once.
+          
+          Safe-Drive is that invisible force. It works in the background, detecting harmful content, toxic behavior, and hate speech the moment it appears. It doesn’t just identify danger — it understands context, so false positives are minimized, and real threats are flagged before they escalate.
+          <br>
+          It’s not about replacing people. It’s about empowering them to act faster, smarter, and with confidence. Safe-Drive provides real-time alerts, customizable settings, and seamless integration — while remaining fully GDPR-compliant and trusted by top-tier partners.
+          
+          By implementing Safe-Drive, you prove to users, advertisers, and regulators that safety isn’t an afterthought — it’s built into the foundation of your platform.
+          
+          And when your competitors are still explaining why they didn’t act, you’ll already be known for preventing the crisis that never happened.
+          
+          The smartest defense is the one your users never notice — but always benefit from. With Safe-Drive, you lead not by noise, but by example.
+          
+          </p>
+      </div>
+
+      <div class="line-box"></div>
+
+    </div>
+</div>
+  </div>
+     
+  <div class="text-section">
+    <br>
+    <h1 class="caption">User Data Protection</h1>
+    <br>
+    <p>
+      Our software requires access to your system and backend — so it's only natural to ask:
+      <strong>How can you trust that your data remains private?</strong>
+    </p>
+  
+    <p>
+      <strong>Safe-Drive</strong> is provided via our servers, but it does <em>not</em> actively access your backend data.  
+      The connection exists solely to enable real-time functionality and processing — <strong>not</strong> to view or store your content.
+    </p>
+
+    <p style="margin-top: 20px;">
+      <strong>Important:</strong> Our servers <strong>do not see</strong> what happens in your backend.  
+      The software is only <strong>linked</strong> through our system, not directly embedded — which means:
+    </p>
+  
+    <ul style="list-style-type: none; padding-left: 0; font-size: 18px; line-height: 1.6;">
+      <li><i class="fa-solid fa-check"></i> Your data remains <strong>fully under your control</strong></li>
+      <li><i class="fa-solid fa-check"></i> Your backend stays <strong>100% private and protected</strong></li>
+    </ul>
+  </div>
+      <div class="schraeger-container2">
+        <div class="part-of2"></div>
+    </div>
+  <footer>
+    &copy; 2025 Safe-Drive AI. All rights reserved.
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll("nav a");
+  
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        document.querySelector("nav a.active")?.classList.remove("active");
+        link.classList.add("active");
+      });
+    });
+  </script>
+
+
+<script>
+  function openAdmin() {
+    document.getElementById("adminOverlay").classList.remove("hidden");
+  }
+  
+  function closeAdmin() {
+    document.getElementById("adminOverlay").classList.add("hidden");
+  }
+  
+  function switchTab(tab) {
+    document.querySelectorAll(".admin-tab").forEach(t => t.classList.add("hidden"));
+    document.getElementById("tab-" + tab).classList.remove("hidden");
+  }
+  </script>
+
+    
+  
+</body>
+</html>

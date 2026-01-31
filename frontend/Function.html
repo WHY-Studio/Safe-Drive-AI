@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe-Drive AI - Function</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/svg" href="img/Bild_2026-01-13_163007155-removebg-preview.png" sizes="32x32">
+  <style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(30,94,255,0.08), transparent 60%),
+              #0f1218;
+  color: #e6e9f0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* ================= HEADER / NAV ================= */
+
+header {
+  background: linear-gradient(to right, #151a22, #10141b);
+  padding: 10px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  height: 60px;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+li {
+  font-size: 22px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 22px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: #dce3ff;
+  text-decoration: none;
+  border-radius: 999px;
+  background: transparent;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-1.5px);
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #ffffff;
+}
+
+/* SVG Border */
+.border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.border-svg rect {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 1.8;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1),
+              filter 0.3s ease;
+}
+
+.nav-link:hover rect,
+.nav-link.active rect {
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 8px rgba(30,94,255,0.6));
+}
+
+.icon-link {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 22px;
+}
+
+.icon-border circle {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.icon-link:hover circle,
+.icon-link.active circle {
+  stroke-dashoffset: 0;
+}
+
+/* ================= LOGO ================= */
+
+.logo-img {
+  height: 90px;
+  right: -2px;
+  top: -5px;
+  filter: grayscale(1) brightness(1.2);
+  position: absolute;
+}
+
+/* ================= TITLES / DIVIDER ================= */
+
+.caption-position {
+  margin-top: 35px;
+  position: relative;
+}
+
+.caption-font {
+  font-size: 46px;
+  color: #e6ecff;
+  letter-spacing: 0.5px;
+}
+
+.strich,
+.trennung {
+  height: 2px;
+  width: 100%;
+  background:  #1e5eff;
+  box-shadow: 0 0 12px rgba(30,94,255,0.6);
+}
+
+/* ================= FEATURES ================= */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 70px 40px;
+  background: transparent;
+  margin-top: 40px;
+}
+
+.card {
+  background: linear-gradient(180deg, #161b25, #11151d);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  transition: height 0.5s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  height: 160px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  position: static;
+}
+
+.card:hover {
+  height: 360px;
+  transform: translateY(-6px);
+  
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #1e5eff;
+}
+
+.card strong {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.extra-text {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  margin-top: 12px;
+  color: #cfd6ff;
+}
+
+.card:hover .extra-text {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* ================= INSTRUCTION BOX ================= */
+
+.card-box {
+  background: linear-gradient(180deg, #151a22, #10141b);
+  width: 85%;
+  max-width: 1400px;
+  margin: 80px auto 60px;
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  text-align: left;
+  position: relative;
+}
+
+.card-box h3 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
+.card-box ol {
+  font-size: 15px;
+  line-height: 1.8;
+  padding-left: 20px;
+  color: #dbe2ff;
+}
+
+.card-box ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.card-box p {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* ================= BACKGROUND BLOCK ================= */
+
+.background {
+  height: 160px;
+  width: 500px;
+  background: radial-gradient(circle, rgba(30,94,255,0.25), transparent 70%);
+  margin: 0 auto;
+  filter: blur(40px);
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  background-color: #0b0e14;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #9aa4b2;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#"><img src="img/Bild_2025-07-23_212955299-removebg-preview.png" class="logo-img" alt="Safe-Drive Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="Home.html" class="nav-link ">
+          Home
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="98"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+        <li><a href="Function.html" class="nav-link active" style="justify-self: center;">Function 
+          
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="100"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a></li>
+        <li><a href="About-us.html"class="nav-link">About<svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="Abo-models.html"class="nav-link">Abo's<svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="login.html" class="nav-link icon-link" style="font-size: 30px; ">
+          <i class="fa-solid fa-circle-user"></i>
+        
+          <svg class="border-svg icon-border"
+               viewBox="0 0 100 100"
+               preserveAspectRatio="xMidYMid meet">
+            <circle
+              cx="50"
+              cy="50"
+              r="48"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="strich"></div>
+
+
+  <div class="caption-position">
+    <h2 class="caption-font">How it Works</h2>
+  </div>
+
+  <section class="features">
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+      <div>
+        <strong>Analysis</strong><br />
+        Automatically detect toxic content.
+        <div class="extra-text">
+          <p>Our AI continuously scans all incoming content and reliably filters out toxic comments and posts to ensure a safe digital environment.</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-message"></i></div>
+      <div>
+        <strong>Automation</strong><br />
+        Responds faster than ever before.
+        <div class="extra-text">
+          <p>Thanks to automated processes, Safe-Drive can instantly respond to detected toxic content and take appropriate action – more efficiently and faster than manual methods.</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-link"></i></div>
+      <div>
+        <strong>Cross-platform</strong><br />
+        Supports all types of platforms.
+        <div class="extra-text">
+          <p>Safe-Drive is compatible with the largest platforms and enables centralized management and monitoring of content across various social networks.</p>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <div class="trennung"></div> 
+  <div class="card-box">
+    <h3>Instruction</h3>
+    <div class="position">
+      <br><br><br><br><br>
+      <ol>
+        <li>
+          <strong>Subscribe to a Safe-Drive plan</strong><br>
+          Visit our website and choose the Safe-Drive subscription that best suits your needs. After subscribing, your personal API key will be generated and available in your dashboard.
+        </li><br>
+        <li>
+          <strong>Configure your settings</strong><br>
+          Go to your user dashboard and adjust your preferences:
+          <ul>
+            <li>Choose which content types should be monitored (e.g., comments, messages, posts).</li>
+            <li>Set toxicity threshold levels.</li>
+            <li>Enable automatic alerts if desired.</li>
+          </ul>
+        </li><br>
+        <li>
+          <strong>Integrate the API into your system</strong><br>
+          Use our well-documented API endpoint to connect Safe-Drive to your platform. Integration requires just a few lines of code and works with any programming language or infrastructure.
+        </li><br>
+        <li>
+          <strong>Activate real-time detection</strong><br>
+          Once integrated, Safe-Drive immediately starts monitoring all incoming content. Each comment or message is analyzed in real time within milliseconds.
+        </li><br>
+        <li>
+          <strong>Automatic reporting of toxic content</strong><br>
+          If toxic, hateful, or discriminatory content is detected, Safe-Drive instantly reports it – along with relevant user data – to the respective platform provider.
+        </li><br>
+      </ol>
+      <p><strong>Result:</strong> Your platform becomes safer, more efficient, and ethically aligned – with no manual effort required.</p>
+    </div>
+  </div>
+  
+  
+  <div class="background"></div>
+
+  <footer>
+    &copy; 2025 Safe-Drive AI. All rights reserved.
+  </footer>
+</body>
+</html>

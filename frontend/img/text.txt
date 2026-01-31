@@ -1,0 +1,27 @@
+Our software Safe-Drive is an advanced AI solution specifically trained to reliably detect and automatically report malicious, toxic, or discriminatory comments and messages. Through ongoing monthly testing, optimization, and updates, we ensure that our AI remains at the cutting edge of both technology and ethical standards.
+
+After successfully completing a subscription, users receive a unique API key that can be seamlessly integrated into their existing systems, websites, or even custom software solutions. Once Safe-Drive is implemented, the AI monitors incoming content in real time. If a toxic comment or harmful message is detected, it is automatically reported – along with the relevant user data – to the appropriate platform provider.
+
+email: Safe-Drive.ai@web.de
+
+<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGpySxAe2s/WnWb7J1CcwSfm1jNTgUoEQ/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGpySxAe2s&#x2F;WnWb7J1CcwSfm1jNTgUoEQ&#x2F;watch?utm_content=DAGpySxAe2s&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Safe-Drive Ai</a> von Vhj Hagen
+
+
+<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGpySxAe2s/WnWb7J1CcwSfm1jNTgUoEQ/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGpySxAe2s&#x2F;WnWb7J1CcwSfm1jNTgUoEQ&#x2F;watch?utm_content=DAGpySxAe2s&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Safe-Drive Ai</a> von Vhj Hagen
+
+
+Our current version is capable of analyzing, classifying, and reporting toxic content in less than 0.2 seconds – fast, accurate, and fully GDPR-compliant.

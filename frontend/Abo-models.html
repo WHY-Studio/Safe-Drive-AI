@@ -1,0 +1,710 @@
+<!DOCTYPE html> 
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe-Drive AI - Abos</title>
+  <link rel="icon" type="image/svg" href="img/Bild_2026-01-13_163007155-removebg-preview.png" sizes="32x32">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(30,94,255,0.08), transparent 60%),
+              #0f1218;
+  color: #e6e9f0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+header {
+  background: linear-gradient(to right, #151a22, #10141b);
+  padding: 10px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  height: 60px;
+  position: relative;
+  
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 22px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: #dce3ff;
+  text-decoration: none;
+  border-radius: 999px;
+  background: transparent;
+  transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-1.5px);
+  color: #ffffff;
+}
+
+.nav-link.active {
+  background: rgba(30, 94, 255, 0);
+}
+
+/* SVG Border */
+.border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.nav-link:hover rect,
+.nav-link.active rect {
+  stroke-dashoffset: 0;
+}
+
+.border-svg rect {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 1.8;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1),
+              filter 0.3s ease;
+}
+
+.nav-link:hover rect,
+.nav-link.active rect {
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 8px rgba(30,94,255,0.6));
+}
+
+.icon-link {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 22px;
+}
+
+.icon-border circle {
+  fill: none;
+  stroke: #1e5eff;
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.6s cubic-bezier(.22,1,.36,1);
+}
+
+.icon-link:hover circle,
+.icon-link.active circle {
+  stroke-dashoffset: 0;
+}
+
+li {
+  font-size: 22px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+    .hero {
+      padding: 80px 20px;
+      background: linear-gradient(145deg, #f6f8fc00, #dbe4f000);
+      border-bottom: 2px solid #1a3a6d;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin: 20px 0 10px;
+      color: #1a3a6d;
+    }
+
+    .hero p {
+      font-size: 1.4em;
+      color: #333;
+    }
+    .hero img {
+      height: 290px;
+    }
+
+    .logo-img {
+      height: 90px;
+      right: -2px;
+      top: -5px;
+      filter: grayscale(1);
+      position: absolute;
+    }
+
+    .features {
+      margin-top: 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 50px 20px;
+      background: #f9fbff;
+    }
+
+    .card {
+      background: #151a22;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+      height: 500px;
+    }
+
+
+
+    .card-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: #1a3a6d;
+    }
+
+    .card button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #1e5eff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background-color: #3d5884;
+    }
+
+    footer {
+      background-color: #0a0d16;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    .strich {
+      height: 2px;
+      background-color: #1e5eff;
+      width: 100%;
+    }
+    #icon_login {
+      font-size: 28px; 
+      margin-top: 3px;
+    }
+    .card-box {
+      background-color: #151a22;
+      justify-self: center;
+      width: 1589px;
+      height: 800px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+    .hero {
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+    .img-caption {
+      margin-bottom: -30px;
+      
+    }
+    .starter-img {
+      margin-top: 140px;
+      height: 500px;
+      position: absolute;
+      right: 150px;
+    }
+
+
+    .carousel-section {
+      padding: 60px 20px;
+      background: #f9fbff;
+      text-align: center;
+    }
+  
+    .carousel-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 30px;
+    }
+    .features {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      padding: 50px 20px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background-color: #1e5eff70;
+      height: 793px;
+      width: 1550px;
+      justify-self: center;
+    }
+    .video-background {
+      height: 893px;
+      position: absolute;
+      border-radius: 16px;
+      z-index: -1;
+     
+      
+    }
+
+  
+    .arrow {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #1a3a6d;
+      z-index: 10;
+    }
+  
+    .carousel {
+      display: flex;
+      gap: 30px;
+      transition: transform 0.5s ease;
+      width: 100%;
+      max-width: 1000px;
+      justify-content: center;
+    }
+  
+    .carousel-card {
+      flex: 0 0 300px;
+      background: #151a22;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.5s, opacity 0.5s;
+      transform: scale(0.8);
+      opacity: 0.6;
+    }
+  
+    .carousel-card.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .carousel-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 100px auto;
+      max-width: 1200px;
+      overflow: visible; /* <--- wichtig */
+      padding: 20px;  
+      
+    }
+
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+      gap: 40px;
+    }
+
+    .card {
+      width: 300px;
+      height: 500px;
+      flex-shrink: 0;
+      transform: scale(0.85);
+      opacity: 0.7;
+      transition: transform 0.5s, opacity 0.5s;
+      border-radius: 12px; /* Ecken abrunden */
+      overflow: visible; /* Inhalte innerhalb der runden Ecken abschneiden */
+      background: #151a22; /* oder ein anderer sichtbarer Hintergrund */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* optional für Tiefe */
+    
+
+    }
+
+    .card.active {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .arrow {
+      background: none;
+      border: none;
+      font-size: 36px;
+      cursor: pointer;
+      color: #1e5eff;
+      z-index: 2;
+      transition: color 0.3s;
+    }
+
+    .arrow:hover {
+      color: #3d5884;
+    }
+    .card-caption {
+      font-size: x-large;
+      color: #1e5eff;
+      margin-top: 60px;
+      
+
+    }
+    .inner-cardbox {
+      display: flex;
+    }
+    .positioner {
+      margin: 50px;
+      width: 600px;
+      justify-content: center;
+      height: 700px;
+
+    }
+    .cap-cardbox1 {
+      font-size: xx-large;
+      color: #1e5eff;
+      margin-top: 30px;
+      padding-top: 30px;
+    }
+    .position-3x {
+      margin-left: 50px;
+      margin-top: 60px;
+      width: 440px;
+      height: 500px;
+    }
+    .flex {
+      display: flex;
+      margin-left: -50px;
+      justify-self: center;
+    
+    }
+    #stronger {
+      font-size: larger;
+      color:#1e5eff;
+    }
+    .admin-access {
+      background-color: #151a22;
+      margin-left: 2%;
+      width: 1089px;
+      height: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      border-radius: 12px;
+      
+    }
+    .admin-caption {
+      color: #1e5eff;
+      margin-top: 20px;
+    }
+    .admin-p {
+      font-size: small;
+      margin-top: -20px;
+    }
+    .admin-button {
+      margin-top: 100px;
+      background-color: #1e5eff;
+      border-color: #dbe4f0;
+      width: 300px;
+      height: 50px;
+      border-radius: 16px;
+      color: #dbe4f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-style: none;
+      border: #dbe4f0 2px;
+      font-size: large;
+    }
+    .admin-button:hover {
+      background-color: #2554cb;
+    }
+    .positon-admin {
+      display: flex;
+      justify-self: center;
+      width: 1589px;
+      height: 300px;
+      z-index: -1;
+      margin-top: 80px;
+    }
+    .icon-admin {
+      position: absolute;
+      font-size: 200px;
+      right: 0px;
+      left: 10px;
+      top: 20px;
+      color: #1e5eff;
+      
+    }
+    .icon-container{
+      position: absolute;
+      height: 350px;
+      width: 350px;
+      background-color: #151a22;
+      margin-left: 1200px;
+      justify-content: center;
+      border-radius: 180px;
+      margin-top: -25px;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .extra {
+      position: absolute;
+      top: 1050px;
+      left: 30%;
+      right: 30%;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#"><img src="img/Bild_2025-07-23_212955299-removebg-preview.png" class="logo-img" alt="Safe-Drive Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="Home.html" class="nav-link">
+          Home
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="98"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+        <li><a href="Function.html" class="nav-link" style="justify-self: center;">Function 
+          
+          <svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="100"
+              height="38"
+              rx="20"
+              ry="20"
+              pathLength="1"
+            />
+          </svg>
+        </a></li>
+        <li><a href="About-us.html"class="nav-link">About<svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="Abo-models.html"class="nav-link active">Abo's<svg class="border-svg" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+          <rect
+            x="1"
+            y="1"
+            width="98"
+            height="38"
+            rx="20"
+            ry="20"
+            pathLength="1"
+          />
+        </svg>
+      </a></li>
+        <li><a href="login.html" class="nav-link icon-link" style="font-size: 30px; ">
+          <i class="fa-solid fa-circle-user"></i>
+        
+          <svg class="border-svg icon-border"
+               viewBox="0 0 100 100"
+               preserveAspectRatio="xMidYMid meet">
+            <circle
+              cx="50"
+              cy="50"
+              r="48"
+              pathLength="1"
+            />
+          </svg>
+        </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="strich"></div>
+
+  <div class="hero">
+    <img src="img/Bild_2026-01-13_161924596-removebg-preview.png" class="img-caption">
+    <div class="line"></div>
+  </div>
+
+  <div class="card-box">
+    <h3 class="cap-cardbox1">Our Recommendation</h3>
+    <div class="flex">
+      <div class="position-3x"><p><strong id="stronger">Starter</strong><br><br><br><br><br>– For Small Websites & Personal Projects <br><br>
+        10,000 requests per month <br><br>
+        
+        The Starter plan is designed specifically for small platforms, blogs, or private software projects. With 10,000 requests per month, it's perfectly suited for low-traffic applications and lightweight tools.
+        Recommended for: Personal websites, hobby tools, lightweight apps
+        Not suitable for: Medium or high-traffic platforms, business use</p></div>
+      <div class="position-3x"><p><strong id="stronger">Pro</strong><br></p><br><br><br>– For Growing Platforms & Dynamic Systems <br><br>
+        1,000,000 requests per month <br><br>
+        
+        The Pro plan is ideal for expanding platforms, mid-sized systems, or chat servers. It offers robust capacity for semi-professional use while remaining cost-efficient.
+        Recommended for: Community platforms, forums, chat systems
+        Not suitable for: Large-scale enterprise use or heavy data loads</div>
+      <div class="position-3x"><p><strong id="stronger">Ultimate</strong><br><br><br><br><br>– For Enterprises & Social Media Platforms <br><br>
+        Unlimited requests <br><br>
+        
+        The Ultimate plan is built for large-scale systems and corporate environments. With unlimited requests per month, it delivers maximum capacity for demanding applications such as social networks or AI-powered systems.
+        Recommended for: Enterprises, social media companies, high-volume platforms
+        Not suitable for: Small websites or light applications
+        
+        </p></div>
+        <div class="extra">
+          <p>Need help choosing the right plan?<br>
+            We’re happy to assist you in selecting the perfect subscription for your needs.
+            
+            </p>
+        </div>
+    </div>
+  </div>
+
+  <section class="features">
+    <video src="img/3121459-uhd_3840_2160_24fps.mp4" autoplay muted loop class="video-background"></video>
+    <section class="carousel-wrapper">
+      <button class="arrow left" onclick="slide(-1)"><i class="fas fa-chevron-left"></i></button>
+      <div class="carousel" id="carousel">
+        <div class="card"> <!-- Starter -->
+          <h2>Starter</h2>
+          <p>Grundlegende Kontrolle</p>
+          <ul>
+            <li>Kontrollstärke: Schwach</li>
+            <li>Keine Updates</li>
+            <li>Einmaliger API-Key</li>
+          </ul>
+          <button onclick="window.location.href='/abo?plan=starter'">59,99€ /Month</button>
+        </div>
+    
+        <div class="card"> <!-- Pro -->
+          <h2>Pro</h2>
+          <p>Erweiterte Kontrolle</p>
+          <ul>
+            <li>Kontrollstärke: Mittel</li>
+            <li>Monatliche Updates</li>
+            <li>API-Key mit Support</li>
+          </ul>
+          <button onclick="window.location.href='/abo?plan=pro'">299,99€ /Month</button>
+        </div>
+    
+        <div class="card"> <!-- Ultimate -->
+          <h2>Ultimate</h2>
+          <p>Maximale Kontrolle + Priorität</p>
+          <ul>
+            <li>Kontrollstärke: Stark</li>
+            <li>Monatliche Updates</li>
+            <li>Erweiterter API-Key & Adminzugang</li>
+          </ul>
+          <button onclick="window.location.href='/abo?plan=ultimate'">499,99€ /Month</button>
+        </div>
+      </div>
+      <button class="arrow right" onclick="slide(1)"><i class="fas fa-chevron-right"></i></button>
+    </section>
+    
+  </section>
+  <div class="card-box">
+    <div class="inner-cardbox">
+      <img src="img/Starter (2).png" class="starter-img">
+      <div class="positioner">
+        <h4 class="card-caption">Our Abonement's</h4>
+        <p class="text-in-box"><br><br> Our Recommendation: The Best for Your Platform
+          For companies and operators who want maximum performance, the highest reliability, and complete control, we recommend our Premium subscription.
+          
+          Why the Premium subscription?
+          The Premium subscription offers unlimited requests to Safe-Drive and thus unrestricted access to all AI functions. It processes up to 51 million requests per month – in real time, without delay.
+          
+          In comparison:
+          <br>
+          The response speed is three times faster than with the Pro subscription
+          
+          And six times faster than with the Starter subscription.
+          
+          This means faster moderation, more precise results, and a significantly better user experience on your platform.
+          <br><br><br>
+          Why is the Premium subscription more expensive? 
+          <br>
+          
+          Our AI processes huge amounts of data in fractions of a second and requires powerful servers, large storage capacities, and high energy efficiency. This technical complexity results in correspondingly higher operating costs.
+          
+          Nevertheless, we constantly work to keep our prices fair and transparent.
+          
+          We also continuously invest in:
+          
+          regular updates,
+          
+          targeted further developments,
+          
+          and training measures for our AI.
+          
+          This ensures that you always benefit from a state-of-the-art, reliable solution – using the latest technology.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="positon-admin">
+    <div class="icon-container">
+      <div class="icon-admin"><i class="fa-solid fa-user-shield"></i></div>
+    </div>
+    <div class="admin-access">
+      <h2 class="admin-caption">Your Admin-access</h2>
+        <p class="admin-p">(Only for Ultimate-Users)</p>
+        <button class="admin-button" onclick="window.location.href='/abo?plan=ultimate'"><i class="fa-solid fa-right-to-bracket"></i></button>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Safe-Drive AI. All rights reserved.
+  </footer>
+
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const cards = carousel.querySelectorAll('.card');
+    let current = 1;
+  
+    function updateCarousel() {
+      const cardWidth = cards[0].offsetWidth + 40; // 40px gap
+      carousel.style.transform = `translateX(${-cardWidth * (current - 1)}px)`;   
+  
+      cards.forEach((card, index) => {
+        card.classList.toggle('active', index === current);
+        card.style.borderRadius = '12px';
+      });
+    }
+    document.querySelectorAll('.card').forEach(card => {
+      
+      
+    });
+
+  
+    function slide(direction) {
+      current += direction;
+      if (current < 0) current = cards.length - 1;
+      if (current >= cards.length) current = 0;
+      updateCarousel();
+    }
+  
+    // Init
+    updateCarousel();
+  </script>
+  
+
+</body>
+</html>
