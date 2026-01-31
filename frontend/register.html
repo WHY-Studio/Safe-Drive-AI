@@ -550,11 +550,8 @@ footer {
       <p>Access your Safe-Drive AI dashboard</p>
   
       <div class="input-group">
-        <input type="text" id="username" placeholder="Username">
-      </div>
-  
-      <div class="input-group">
-        <input type="text" id="apikey" placeholder="API-Key (optional)">
+        <input type="text" id="accessCode" placeholder="Zugangscode (vom API-Key)">
+        <div class="error-text">Zugangscode ist erforderlich</div>
       </div>
   
       <div class="input-group" id="emailGroup">
@@ -605,12 +602,15 @@ document.querySelectorAll("input").forEach(input => {
 async function register() {
   const email    = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
+  const accessCode = document.getElementById("accessCode").value.trim();
 
   const emailGroup = document.getElementById("emailGroup");
   const passGroup  = document.getElementById("passGroup");
+  const accessGroup = document.getElementById("accessCode").parentElement;
 
   emailGroup.classList.remove("error");
   passGroup.classList.remove("error");
+  accessGroup.classList.remove("error");
 
   let hasError = false;
 
@@ -622,28 +622,40 @@ async function register() {
     passGroup.classList.add("error");
     hasError = true;
   }
+  if (!accessCode) {
+    accessGroup.classList.add("error");
+    hasError = true;
+  }
   if (hasError) return;
 
   try {
-    const res = await fetch("/register", {
+    const res = await fetch("/api/register/", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ email, password }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password, access_code: accessCode }),
       credentials: "include"
     });
 
-    if (res.redirected) {
-      window.location.href = res.url; // → /login
+    const payload = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const errorMessage = payload.error || "Registrierung fehlgeschlagen";
+      if (errorMessage.toLowerCase().includes("zugangscode")) {
+        accessGroup.classList.add("error");
+      } else {
+        emailGroup.classList.add("error");
+      }
+      const emailErrorText = emailGroup.querySelector(".error-text");
+      if (emailErrorText) {
+        emailErrorText.innerText = errorMessage;
+      }
+      const accessErrorText = accessGroup.querySelector(".error-text");
+      if (accessErrorText) {
+        accessErrorText.innerText = errorMessage;
+      }
       return;
     }
 
-    if (!res.ok) {
-      emailGroup.classList.add("error");
-      const errorText = emailGroup.querySelector(".error-text");
-      if (errorText) {
-        errorText.innerText = "Email already exists";
-      }
-    }
+    window.location.href = "login.html";
 
   } catch (err) {
     alert("Server not reachable.");
