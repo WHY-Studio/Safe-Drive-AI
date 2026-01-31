@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.hashers import make_password
 from django.db import migrations
 
 
@@ -14,10 +15,11 @@ def seed_admin(apps, schema_editor):
             'is_staff': True,
             'is_superuser': True,
             'is_active': True,
+            'password': make_password(admin_password),
         },
     )
-    if created:
-        admin_user.set_password(admin_password)
+    if not created and not admin_user.password:
+        admin_user.password = make_password(admin_password)
         admin_user.save(update_fields=['password'])
 
     access_code_model = apps.get_model('accounts', 'AccessCode')
