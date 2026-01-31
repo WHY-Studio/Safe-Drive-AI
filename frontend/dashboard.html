@@ -18,6 +18,11 @@ body {
   height: 100vh;
 }
 
+body.auth-loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ===== SIDEBAR ===== */
 .sidebar {
   width: 260px;
@@ -258,15 +263,18 @@ th {
 </div>
 
 <script>
-/* ===== SECURITY CHECK (Backend Pflicht!) ===== */
-fetch("/session", { credentials: "include" })
+const API_BASE = "http://127.0.0.1:8000";
+document.body.classList.add("auth-loading");
+fetch(`${API_BASE}/api/me/`, { credentials: "include" })
   .then(r => r.json())
   .then(s => {
-    if (!s.loggedIn || s.role !== "admin") {
-      window.location.href = "/login.html";
+    if (!s.authenticated || s.role !== "admin") {
+      window.location.href = "login.html";
+      return;
     }
+    document.body.classList.remove("auth-loading");
   }).catch(() => {
-    window.location.href = "/login.html";
+    window.location.href = "login.html";
   });
 
 function openTab(i) {

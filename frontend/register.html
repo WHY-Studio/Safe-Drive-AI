@@ -600,6 +600,7 @@ document.querySelectorAll("input").forEach(input => {
 
 /* Login */
 async function register() {
+  const API_BASE = "http://127.0.0.1:8000";
   const email    = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
   const accessCode = document.getElementById("accessCode").value.trim();
@@ -629,7 +630,7 @@ async function register() {
   if (hasError) return;
 
   try {
-    const res = await fetch("/api/register/", {
+    const res = await fetch(`${API_BASE}/api/register/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password, access_code: accessCode }),

@@ -598,6 +598,7 @@ document.querySelectorAll("input").forEach(input => {
 
 
 async function login() {
+  const API_BASE = "http://127.0.0.1:8000";
   // Turtle-Wrapper Grundzustand
   turtle.className = "turtle-login-wrapper";
 
@@ -633,7 +634,7 @@ async function login() {
 
   // Ab hier: Async Login-Request
   try {
-    const res = await fetch("/api/login/", {
+    const res = await fetch(`${API_BASE}/api/login/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
